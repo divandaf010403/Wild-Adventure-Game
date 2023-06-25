@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveSpeed = 2f;    // Speed at which the enemy moves
-    public float leftBound;         // Left boundary position
-    public float rightBound;        // Right boundary position
+    public float moveSpeed = 5f; // Speed at which the enemy moves
+    public float movementDuration = 3f; // Time it takes for the enemy to move in one direction
 
-    private bool movingRight = true; // Flag to track the direction of movement
+    public Rigidbody rb;
+    private float timer;
+    private bool isMovingRight = true;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        timer = movementDuration;
+    }
 
     void Update()
     {
-        // Calculate the enemy's new position
-        Vector3 newPosition = transform.position + (movingRight ? Vector3.right : Vector3.left) * moveSpeed * Time.deltaTime;
+        timer -= Time.deltaTime;
 
-        // Check if the enemy has reached the boundary, then change direction
-        if (newPosition.x >= rightBound)
+        if (timer <= 0f)
         {
-            movingRight = false;
-        }
-        else if (newPosition.x <= leftBound)
-        {
-            movingRight = true;
+            // Change direction
+            isMovingRight = !isMovingRight;
+            timer = movementDuration;
         }
 
-        // Update the enemy's position
-        transform.position = newPosition;
+        // Calculate movement vector
+        Vector3 movement = isMovingRight ? Vector3.right : Vector3.left;
+        movement *= moveSpeed * Time.deltaTime;
+
+        // Apply movement to the enemy
+        rb.MovePosition(transform.position + movement);
     }
 }

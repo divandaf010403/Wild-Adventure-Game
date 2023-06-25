@@ -978,6 +978,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 279080629578431949, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2088046395}
+    - targetCorrespondingSourceObject: {fileID: 279080629578431949, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2088046389}
     - targetCorrespondingSourceObject: {fileID: 279080629578431949, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
       insertIndex: -1
@@ -1422,6 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 100
   jumpForce: 180
+  scale: 340
   groundCheck: {fileID: 324429126}
   groundCheckRadius: 0.2
   groundLayer:
@@ -1450,6 +1454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 183586641}
   chestPoint: 0
+  totalPoint: 5
 --- !u!1 &415006344
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,8 +6131,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  leftBound: -0.85
-  rightBound: 1.8
+  movementDuration: 3
+  rb: {fileID: 0}
+--- !u!50 &2088046395
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088046383}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2097520686
 GameObject:
   m_ObjectHideFlags: 0

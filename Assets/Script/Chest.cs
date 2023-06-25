@@ -9,6 +9,8 @@ public class Chest : MonoBehaviour
     public Text score;
     public int chestPoint = 0;
 
+    public int totalPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class Chest : MonoBehaviour
 
         if (collision.tag == "doors")
         {
-            if (chestPoint == 5)
+            if (chestPoint == totalPoint)
             {
                 SceneManager.LoadScene("Level2");
             }

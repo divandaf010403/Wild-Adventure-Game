@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;            // Movement speed
     public float jumpForce = 5f;            // Jump force
+    public float scale;
     public Transform groundCheck;           // Ground check object
     public float groundCheckRadius = 0.2f;  // Radius of the ground check sphere
     public LayerMask groundLayer;           // Layer mask for the ground
@@ -41,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (moveHorizontal > 0 || moveHorizontal < 0)
         {
-            transform.localScale = new Vector2(340f * moveHorizontal, 340f);
+            transform.localScale = new Vector2(scale * moveHorizontal, scale);
         }
 
         // Check if the player is on the ground
