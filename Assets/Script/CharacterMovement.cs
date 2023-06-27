@@ -52,12 +52,14 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isJumping = true;
+            Debug.Log("Lompat");
         }
 
         // Apply jump force if the player is jumping
         if (isJumping)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            Debug.Log("terbanggg");
             isJumping = false;
         }
 

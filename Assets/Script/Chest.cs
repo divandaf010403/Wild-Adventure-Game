@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,12 @@ public class Chest : MonoBehaviour
 
     public int totalPoint;
 
+    public String nextScene;
+
     // Start is called before the first frame update
     void Start()
     {
-        score.text = chestPoint.ToString() + "/5";
+        score.text = chestPoint.ToString() + "/" + totalPoint.ToString();
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Chest : MonoBehaviour
         {
             Debug.Log("collect");
             chestPoint = chestPoint + 1;
-            score.text = chestPoint.ToString() + "/5";
+            score.text = chestPoint.ToString() + "/" + totalPoint.ToString();
             collision.gameObject.SetActive(false);
         }
 
@@ -37,7 +40,7 @@ public class Chest : MonoBehaviour
         {
             if (chestPoint == totalPoint)
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene(nextScene);
             }
         }
     }

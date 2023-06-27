@@ -982,9 +982,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 279080629578431949, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2088046389}
-    - targetCorrespondingSourceObject: {fileID: 279080629578431949, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2088046392}
   m_SourcePrefab: {fileID: 100100000, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
 --- !u!4 &278375782 stripped
 Transform:
@@ -1403,7 +1400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411874935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -777.968, y: -401.1, z: -2}
+  m_LocalPosition: {x: -777.968, y: -401.1, z: -2.1}
   m_LocalScale: {x: 340.0732, y: 340.07324, z: 340.07324}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1435,9 +1432,9 @@ MonoBehaviour:
   isClimbing: 0
   health: 3
   hearts:
-  - {fileID: 1047677309}
-  - {fileID: 1602347827}
   - {fileID: 358744239}
+  - {fileID: 1602347827}
+  - {fileID: 1047677309}
   fullHearth: {fileID: 21300000, guid: fdba4d22dcd7ac2498e4687be08d6f63, type: 3}
   emptyHearth: {fileID: 21300000, guid: 1f9f6b82a820d2849b117bde9bec0068, type: 3}
 --- !u!114 &411874942
@@ -1455,6 +1452,7 @@ MonoBehaviour:
   score: {fileID: 183586641}
   chestPoint: 0
   totalPoint: 5
+  nextScene: Level2
 --- !u!1 &415006344
 GameObject:
   m_ObjectHideFlags: 0
@@ -6118,21 +6116,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19, y: 0.33}
   m_EdgeRadius: 0
---- !u!114 &2088046392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088046383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60ebbff05b581d742be2fb01ce1d6c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  movementDuration: 3
-  rb: {fileID: 0}
 --- !u!50 &2088046395
 Rigidbody2D:
   serializedVersion: 4
@@ -6310,6 +6293,10 @@ PrefabInstance:
     - target: {fileID: 3924662660844304361, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694044098111194193, guid: 87cedeff9de10304394dcd0f1dfd7e18, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
