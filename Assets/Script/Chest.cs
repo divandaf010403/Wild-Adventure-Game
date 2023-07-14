@@ -14,6 +14,9 @@ public class Chest : MonoBehaviour
 
     public String nextScene;
 
+    public int levelToUnlock;
+    int numberOfUnlockedLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,13 @@ public class Chest : MonoBehaviour
         {
             if (chestPoint == totalPoint)
             {
-                SceneManager.LoadScene(nextScene);
+                numberOfUnlockedLevel = PlayerPrefs.GetInt("levelsUnlocked");
+                
+                if(numberOfUnlockedLevel <= levelToUnlock)
+                {
+                    PlayerPrefs.SetInt("levelsUnlocked", numberOfUnlockedLevel + 1);
+                    SceneManager.LoadScene(nextScene);
+                }
             }
         }
     }

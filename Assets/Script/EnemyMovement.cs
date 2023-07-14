@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed at which the enemy moves
-    public float movementDuration = 3f; // Time it takes for the enemy to move in one direction
+    public float speed = 10f; // The speed at which the character moves
 
-    public Rigidbody rb;
-    private float timer;
-    private bool isMovingRight = true;
+    private bool moveRight = true; // Flag to determine if the character should move right
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        timer = movementDuration;
+        MoveRoutine();
     }
 
-    void Update()
+    private void Update()
     {
-        timer -= Time.deltaTime;
+        
+    }
 
-        if (timer <= 0f)
+    IEnumerator MoveRoutine()
+    {
+        while (true)
         {
-            // Change direction
-            isMovingRight = !isMovingRight;
-            timer = movementDuration;
+            if (moveRight)
+            {
+                MoveRight();
+                yield return new WaitForSeconds(3f);
+            }
+            else
+            {
+                MoveLeft();
+                yield return new WaitForSeconds(3f);
+            }
+            moveRight = !moveRight;
         }
+    }
 
-        // Calculate movement vector
-        Vector3 movement = isMovingRight ? Vector3.right : Vector3.left;
-        movement *= moveSpeed * Time.deltaTime;
+    void MoveRight()
+    {
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
 
-        // Apply movement to the enemy
-        rb.MovePosition(transform.position + movement);
+    void MoveLeft()
+    {
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 }

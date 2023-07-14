@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 759061347575690831}
   - component: {fileID: 3431041076329482699}
   - component: {fileID: 5694044098111194193}
+  - component: {fileID: 8678713318514096447}
   m_Layer: 0
   m_Name: GraveRobber_idle_0
   m_TagString: Untagged
@@ -134,3 +135,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8678713318514096447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279080629578431949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ebbff05b581d742be2fb01ce1d6c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
