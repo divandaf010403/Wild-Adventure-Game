@@ -17,10 +17,13 @@ public class Chest : MonoBehaviour
     public int levelToUnlock;
     int numberOfUnlockedLevel;
 
+    public Text notificationText;
+
     // Start is called before the first frame update
     void Start()
     {
         score.text = chestPoint.ToString() + "/" + totalPoint.ToString();
+        notificationText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,16 +44,30 @@ public class Chest : MonoBehaviour
 
         if (collision.tag == "doors")
         {
+            Debug.Log("Pindahhhhhhh");
             if (chestPoint == totalPoint)
             {
                 numberOfUnlockedLevel = PlayerPrefs.GetInt("levelsUnlocked");
-                
-                if(numberOfUnlockedLevel <= levelToUnlock)
+                SceneManager.LoadScene(nextScene);
+
+                if (numberOfUnlockedLevel <= levelToUnlock)
                 {
                     PlayerPrefs.SetInt("levelsUnlocked", numberOfUnlockedLevel + 1);
-                    SceneManager.LoadScene(nextScene);
                 }
             }
+            else if (chestPoint != totalPoint)
+            {
+                StartCoroutine(UINotification());
+            }
         }
+    }
+
+    IEnumerator UINotification()
+    {
+        notificationText.gameObject.SetActive(true);
+        notificationText.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+        notificationText.text = "Ambil Semua Harta Karun";
+        yield return new WaitForSeconds(5);
+        notificationText.gameObject.SetActive(false);
     }
 }

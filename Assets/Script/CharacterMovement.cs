@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     public Transform groundCheck;           // Ground check object
     public float groundCheckRadius = 0.2f;  // Radius of the ground check sphere
     public LayerMask groundLayer;           // Layer mask for the ground
+    public Animator characterAnimation;
+    public bool isMoving = false;
 
     float moveHorizontal;
     float moveVertical;
@@ -39,6 +41,17 @@ public class CharacterMovement : MonoBehaviour
         moveVertical = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
+
+        if (moveHorizontal != 0)
+        {
+            isMoving = true;
+            characterAnimation.SetBool("walking", true);
+        }
+        else
+        {
+            isMoving = false;
+            characterAnimation.SetBool("walking", false);
+        }
 
         if (moveHorizontal > 0 || moveHorizontal < 0)
         {
