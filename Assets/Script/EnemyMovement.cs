@@ -4,45 +4,36 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 10f; // The speed at which the character moves
+    [SerializeField] float speed = 10f;
 
-    private bool moveRight = true; // Flag to determine if the character should move right
+    Rigidbody2D enemyRb;
+    BoxCollider2D enemyCol;
 
     private void Start()
     {
-        MoveRoutine();
+        enemyRb = GetComponent<Rigidbody2D>();
+        enemyCol = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        
-    }
-
-    IEnumerator MoveRoutine()
-    {
-        while (true)
+        if (isFacingRight())
         {
-            if (moveRight)
-            {
-                MoveRight();
-                yield return new WaitForSeconds(3f);
-            }
-            else
-            {
-                MoveLeft();
-                yield return new WaitForSeconds(3f);
-            }
-            moveRight = !moveRight;
+            enemyRb.velocity = new Vector2(speed, 0f);
+        }
+        else
+        {
+            enemyRb.velocity = new Vector2(speed, 0f);
         }
     }
 
-    void MoveRight()
+    private bool isFacingRight()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        return transform.localScale.x > Mathf.Epsilon;
     }
 
-    void MoveLeft()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.localScale = new Vector2(-(Mathf.Sign(enemyRb.velocity.x)), transform.localScale.y);
     }
 }
