@@ -30,4 +30,15 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName);
     }
+
+    public void CreditPanelOpen(GameObject credits)
+    {
+        credits.SetActive(true);
+        credits.transform.localPosition = new Vector3(0, 0, 0);
+    }
+
+    public void CreditPanelClose(GameObject credits)
+    {
+        credits.SetActive(false);
+    }
 }

@@ -4,36 +4,70 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 10f;
+    [Header("Attack Parameters")]
+    [SerializeField] private float attackCooldown;
+    [SerializeField] private float range;
 
-    Rigidbody2D enemyRb;
-    BoxCollider2D enemyCol;
+    [Header("Collider Parameters")]
+    [SerializeField] private float colliderDistance;
+    [SerializeField] private BoxCollider2D boxCollider;
 
-    private void Start()
+    [Header("Player Layer")]
+    [SerializeField] private LayerMask playerLayer;
+    private float cooldownTimer = Mathf.Infinity;
+
+    //References
+    private Animator anim;
+    private CharacterMovement playerHealth;
+    private patrol enemyPatrol;
+
+    private void Awake()
     {
-        enemyRb = GetComponent<Rigidbody2D>();
-        enemyCol = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<patrol>();
     }
 
     private void Update()
     {
-        if (isFacingRight())
+        cooldownTimer += Time.deltaTime;
+
+        //Attack only when player in sight?
+        if (PlayerInSight())
         {
-            enemyRb.velocity = new Vector2(speed, 0f);
+            if (cooldownTimer >= attackCooldown)
+            {
+                cooldownTimer = 0;
+                anim.SetTrigger("attacking");
+                Debug.Log("serang");
+            }
         }
-        else
-        {
-            enemyRb.velocity = new Vector2(speed, 0f);
-        }
+
+        if (enemyPatrol != null)
+            enemyPatrol.enabled = !PlayerInSight();
     }
 
-    private bool isFacingRight()
+    private bool PlayerInSight()
     {
-        return transform.localScale.x > Mathf.Epsilon;
+        RaycastHit2D hit =
+            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, playerLayer);
+
+        if (hit.collider != null)
+            playerHealth = hit.transform.GetComponent<CharacterMovement>();
+
+        return hit.collider != null;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void DamagePlayer()
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(enemyRb.velocity.x)), transform.localScale.y);
+        if (PlayerInSight())
+            playerHealth.health--;
     }
 }

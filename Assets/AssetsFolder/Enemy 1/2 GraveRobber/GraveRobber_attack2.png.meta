@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -129,7 +129,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GraveRobber_attack2_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 19
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae563a0927adae4428e19bbe6db60f64
+      internalID: -1644833668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraveRobber_attack2_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 22
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93458e62bf40ae942bbb175f8870f9fe
+      internalID: 157495980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraveRobber_attack2_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 25
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c60181d3e9e10498e4c0eb1dd70a61
+      internalID: -1693603418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraveRobber_attack2_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9206abc3f93afdc4780180afecdc33c4
+      internalID: 1971149583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraveRobber_attack2_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 0
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8eaf6310d64abb4ead7b89d20612b53
+      internalID: 1569295926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GraveRobber_attack2_5
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 0
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fec9ad0082c2134f825886f82080fdd
+      internalID: -2142023882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -140,7 +266,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GraveRobber_attack2_0: -1644833668
+      GraveRobber_attack2_1: 157495980
+      GraveRobber_attack2_2: -1693603418
+      GraveRobber_attack2_3: 1971149583
+      GraveRobber_attack2_4: 1569295926
+      GraveRobber_attack2_5: -2142023882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

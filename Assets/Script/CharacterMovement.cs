@@ -106,11 +106,11 @@ public class CharacterMovement : MonoBehaviour
             isLadder = true;
         }
 
-        if (collision.tag == "enemy")
-        {
-            Debug.Log("Waduh");
-            health--;
-        }
+        //if (collision.tag == "enemy")
+        //{
+        //    Debug.Log("Waduh");
+        //    health--;
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
