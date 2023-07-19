@@ -13,6 +13,10 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask groundLayer;           // Layer mask for the ground
     public Animator characterAnimation;
     public bool isMoving = false;
+    
+    AudioSource audio;
+	public AudioClip hitSound;
+    public AudioClip fallSound;
 
     float moveHorizontal;
     float moveVertical;
@@ -29,9 +33,13 @@ public class CharacterMovement : MonoBehaviour
     public Sprite fullHearth;
     public Sprite emptyHearth;
 
+    private Vector3 respawnPosition;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        respawnPosition = transform.position;
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -99,6 +107,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Ladder"))
@@ -106,11 +115,27 @@ public class CharacterMovement : MonoBehaviour
             isLadder = true;
         }
 
-        //if (collision.tag == "enemy")
-        //{
-        //    Debug.Log("Waduh");
-        //    health--;
-        //}
+        if (collision.tag == "enemy")
+        {
+           Debug.Log("Waduh");
+           health--;
+           audio.PlayOneShot(hitSound);
+        }
+
+        if (collision.tag == "trap")
+        {
+            Debug.Log("Waduh");
+            health--;
+            audio.PlayOneShot(hitSound);
+        }
+
+        // Check if the character collides with the "Batas" object
+        if (collision.tag == "batas")
+        {
+            Debug.Log("Waduh Tibo");
+            RespawnCharacter();
+            audio.PlayOneShot(fallSound);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -132,5 +157,19 @@ public class CharacterMovement : MonoBehaviour
         {
             hearts[i].sprite = fullHearth;
         }
+        if (health <= 0)
+        {
+            RespawnCharacter();
+            health = 3;
+        }
+    }
+    private void RespawnCharacter()
+    {
+        // Reset kecepatan dan gaya gravitasi karakter
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 30f;
+
+        // Kembalikan karakter ke posisi awal
+        transform.position = respawnPosition;
     }
 }

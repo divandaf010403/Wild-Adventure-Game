@@ -8,6 +8,8 @@ TagManager:
   - Ladder
   - doors
   - enemy
+  - batas
+  - trap
   layers:
   - Default
   - TransparentFX
