@@ -41,4 +41,10 @@ public class SceneController : MonoBehaviour
     {
         credits.SetActive(false);
     }
+
+    public void resetLevel()
+    {
+        PlayerPrefs.SetInt("levelsUnlocked", 1);
+        PlayerPrefs.DeleteAll();
+    }
 }
